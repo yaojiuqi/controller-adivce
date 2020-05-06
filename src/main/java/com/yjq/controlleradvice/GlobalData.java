@@ -1,6 +1,8 @@
 package com.yjq.controlleradvice;
 
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.HashMap;
@@ -15,5 +17,12 @@ public class GlobalData {
         map.put("address", "com.yjq");
         return map;
     }
-
+    @InitBinder("b")
+    public void initB(WebDataBinder binder){
+        binder.setFieldDefaultPrefix("b.");
+    }
+    @InitBinder("a")
+    public void initA(WebDataBinder binder){
+        binder.setFieldDefaultPrefix("a.");
+    }
 }
